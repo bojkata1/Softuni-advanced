@@ -9,13 +9,24 @@ for row in range(n):
         if matrix[row][col] == 'K':
             knights.append([row, col])
 
-possible_moves = [(1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1), (-2, 1), (1, 2), ]
+possible_moves = [(1, 2), (2, 1), (-1, 2), (-2, 1), (1, -2), (2, -1), (-1, -2), (-2, -1)]
 while True:
-    for knight in knights:
-        for i, j in possible_moves:
-            if [knight[0] + i, knight[1] + j] in knights:
-                knights.remove([knight[0] + i, knight[1] + j])
-                removed_knights += 1
-                continue
-    break
+    max_knight = [0, 0]
+    max_hits = 0
+    for k_row, k_col in knights:
+        hits = 0
+        for move in possible_moves:
+            new_row = k_row + move[0]
+            new_col = k_col + move[1]
+            if 0 <= new_row < n and 0 <= new_col < n:
+                if matrix[new_row][new_col] == 'K':
+                    hits += 1
+        if hits > max_hits:
+            max_knight = [k_row, k_col]
+            max_hits = hits
+    if max_hits == 0:
+        break
+    knights.remove(max_knight)
+    matrix[max_knight[0]][max_knight[1]] = 0
+    removed_knights += 1
 print(removed_knights)
