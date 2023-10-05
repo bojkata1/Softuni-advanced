@@ -2,7 +2,7 @@ numbers_dictionary = {}
 
 line = input()
 
-while line != "Search":
+while line != 'Search':
     number_as_string = line
     try:
         number = int(input())
@@ -14,16 +14,16 @@ while line != "Search":
 
 line = input()
 
-while line != "Remove":
+while line != 'Remove':
     searched = line
     try:
         print(numbers_dictionary[searched])
-    except IndexError:
+    except KeyError:
         print('Number does not exist in dictionary')
     line = input()
 line = input()
 
-while line != "End":
+while line != 'End':
     searched = line
     try:
         del numbers_dictionary[searched]
