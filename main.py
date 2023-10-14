@@ -1,3 +1,7 @@
+print(set('A'))
+test_list = ['A', 'B']
+print(set(test_list) == {'B', 'A'})
+
 a = [0, 2] * 3
 print(a)
 
