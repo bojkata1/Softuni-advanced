@@ -1,8 +1,9 @@
+from collections import defaultdict
+
+
 def movie_organizer(*args):
-    movies = {}
+    movies = defaultdict(list)  # Може и setdefault(genre, []).append()
     for name, genre in args:
-        if not genre in movies.keys():
-            movies[genre] = []
         movies[genre].append(name)
     movies = dict(sorted(movies.items(), key=lambda kvp: (-len(kvp[1]), kvp[0])))
     result = ""
