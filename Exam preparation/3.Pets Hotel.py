@@ -2,21 +2,20 @@ def accommodate_new_pets(capacity, max_weight, *args):
     number_of_pets = len(args)
     pets = {}
     for pet, weight in args:
+        if capacity == 0:
+            break
+        number_of_pets -= 1
         if max_weight < weight:
             continue
         if pet not in pets.keys():
             pets[pet] = 0
-        if capacity == 0:
-            break
-        number_of_pets -= 1
         pets[pet] += 1
         capacity -= 1
-        number_of_pets -= 1
     pets = dict(sorted(pets.items(), key=lambda kvp: kvp[0]))
     if number_of_pets == 0:
-        result = f"All pets are accommodated! Available capacity: {capacity}."
+        result = f"All pets are accommodated! Available capacity: {capacity}.\n"
     else:
-        result = "You did not manage to accommodate all pets!"
+        result = "You did not manage to accommodate all pets!\n"
     result += "Accommodated pets:\n"
     for pet, count in pets.items():
         result += f"{pet}: {count}\n"
