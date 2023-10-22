@@ -18,16 +18,8 @@ while True:
     command = input()
     if command == "collect the nets":
         break
-    des_row = position[0] + moves[command][0]
-    des_col = position[1] + moves[command][1]
-    if des_row < 0:
-        des_row = n-1
-    if des_col < 0:
-        des_col = n-1
-    if des_row > n-1:
-        des_row = 0
-    if des_col > n-1:
-        des_col = 0
+    des_row = (position[0] + moves[command][0]) % n
+    des_col = (position[1] + moves[command][1]) % n
 
     if board[des_row][des_col] == "W":
         print(f"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [{des_row},{des_col}]")
