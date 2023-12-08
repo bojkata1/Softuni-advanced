@@ -95,8 +95,9 @@ class Tournament:
         return collection[0] if collection else None
 
     def get_statistics(self):
-        sorted_teams = sorted(self.teams, key=lambda x: -x.wins)
-        res = f"Tournament: {self.name}\nNumber of Teams: {len(self.teams)}\nTeams:\n"
-        for t in sorted_teams:
-            res += t.get_statistics()
-        return res
+        sorted_teams = sorted(self.teams, key=lambda t: -t.wins)
+        result = [f"""Tournament: {self.name}
+Number of Teams: {len(self.teams)}
+Teams:"""]
+        [result.append(t.get_statistics()) for t in sorted_teams]
+        return '\n'.join(result)

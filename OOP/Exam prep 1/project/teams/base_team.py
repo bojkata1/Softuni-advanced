@@ -57,6 +57,5 @@ Advantage: {self.advantage} points
 Budget: {self.budget:.2f}EUR
 Wins: {self.wins}
 Total Equipment Price: {sum([x.price for x in self.equipment]):.2f}
-Average Protection: {int(avg)}
-"""
+Average Protection: {int(avg)}"""
         return res
